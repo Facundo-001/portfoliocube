@@ -337,4 +337,7 @@
     padding: 0.5rem 0.8rem;
     gap: 0.4rem;
   }
+  .terminal-social-card{
+    width: 90%;
+  }
 }
