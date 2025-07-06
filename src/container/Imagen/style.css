@@ -1,0 +1,171 @@
+/* === General Futurista === */
+.galeria-container {
+  padding: 2rem;
+  background: radial-gradient(circle at center, #030625 40%, #000000 100%);
+  min-height: 100vh;
+  width: 100%;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  animation: fondoFade 2s ease-out;
+}
+
+@keyframes fondoFade {
+  from { opacity: 0; filter: blur(20px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+/* === Botonera === */
+.botonera {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease forwards;
+}
+
+.botonera button {
+  background: linear-gradient(45deg, #00fff7, #00bcd4);
+  border: none;
+  color: #030625;
+  padding: 0.6rem 1.4rem;
+  margin: 0 0.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 0 10px #00fff7aa;
+}
+
+.botonera button:hover,
+.botonera button.activo {
+  background: #ffd366;
+  color: #000;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ffd366aa;
+}
+
+/* === Tarjetas animadas base === */
+.tarjeta {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  animation: aparecerTarjeta 0.6s ease-out forwards;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes aparecerTarjeta {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* === Modo Flex === */
+.modo-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tarjeta.flex {
+  background: linear-gradient(145deg, #0a1a40, #0f2a60);
+  border: 2px solid #00fff7;
+  border-radius: 20px;
+  width: 280px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 0 25px #00fff733;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta.flex:hover {
+  transform: rotateX(8deg) rotateY(6deg) scale(1.08);
+  box-shadow: 0 0 35px #00fff7cc;
+}
+
+/* === Modo Grid === */
+.modo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.tarjeta.grid {
+  background: rgba(10, 20, 40, 0.9);
+  border: 2px solid #FFD366;
+  border-radius: 16px;
+  padding: 1.2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta.grid:hover {
+  transform: perspective(1000px) rotateY(10deg) scale(1.05);
+  box-shadow: 0 0 25px #FFD366cc;
+}
+
+/* === Fancy Modo === */
+.modo-fancy {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tarjeta.fancy {
+  background: #0d132b;
+  border-radius: 20px;
+  width: 280px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+}
+
+.tarjeta.fancy::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #00fff7 10%, transparent 11%);
+  background-size: 5% 5%;
+  animation: gridMove 20s linear infinite;
+  z-index: 0;
+  opacity: 0.07;
+}
+
+@keyframes gridMove {
+  from { transform: translate(0, 0); }
+  to { transform: translate(50%, 50%); }
+}
+
+/* === Elementos internos comunes === */
+.tarjeta img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.tarjeta h3 {
+  color: #FFD366;
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+  z-index: 1;
+  position: relative;
+}
+
+.tarjeta p {
+  color: #F0F4F8;
+  font-size: 1rem;
+  text-align: justify;
+  z-index: 1;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

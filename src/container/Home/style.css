@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Karla:ital,wght@0,200..800;1,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Michroma&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sigmar&display=swap');
+
+/* === ESTILO BASE === */
+body {
+  font-family: 'Karla', sans-serif;
+  color: #F0F4F8;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #030625;
+}
+
+/* TÍTULOS Y NAVEGACIÓN */
+h1, h2, h3, nav {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.carita-cursor {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  z-index: 10;
+  display: none;
+}
+
+.ojo {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  border: 3px solid #030625;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pupila {
+  width: 20px;
+  height: 20px;
+  background: #030625;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.05s ease-out;
+}
+
+
+
+/* === CONTENEDOR GENERAL === */
+.box-precentacion {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+  padding: 1em;
+  background-color: #ffffff08;
+  border-radius: 1em;
+  transition: all 0.3s ease-in-out;
+}
+
+/* === CONTENIDO DE TEXTO === */
+.texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1em;
+}
+
+.texto h2 {
+  font-size: 2em;
+  color: #00FFF7;
+  margin: 0;
+}
+
+.texto p {
+  font-size: 1em;
+  color: #F0F4F8;
+  max-width: 90%;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* === IMAGEN === */
+.img {
+  height: 350px;
+  width: auto;
+}
+
+/* === MEDIA QUERIES === */
+
+/* 🖥️ Pantallas grandes (desde 1820px en adelante) */
+@media screen and (min-width: 1820px) {
+  .box-precentacion {
+    transform: translate(20%, -60%);
+  }
+}
+
+/* 💻 Laptops medianas (1366px - 1819px) */
+@media screen and (min-width: 1366px) and (max-width: 1819px) {
+  .box-precentacion {
+    transform: translate(-45%, -45%);
+  }
+}
+
+/* 📏 Netbooks específicas (1366x768 aprox.) */
+@media screen and (min-width: 1300px) and (max-width: 1400px)
+  and (min-height: 700px) and (max-height: 800px) {
+  .box-precentacion {
+    transform: translate(-43%, -43%);
+    background-color: #ffffff10;
+    border: 2px dashed #00FFF7;
+  }
+
+  body::after {
+    content: "🎯 Resolución de Netbook detectada";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #00FFF7;
+    color: #030625;
+    font-weight: bold;
+    padding: 0.3em 1em;
+    z-index: 9999;
+  }
+}
+
+/* 📱 Tablets (768px - 1365px) */
+@media screen and (min-width: 768px) and (max-width: 1365px) {
+  .box-precentacion {
+    transform: translate(10%, -50%);
+  }
+}
+
+/* === ADAPTACIÓN PARA CELULARES === */
+@media screen and (max-width: 767px) {
+.carita-cursor {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 10;
+}
+
+/* Ojitos alineados */
+.ojo-container {
+  display: flex;
+  gap: 3rem; /* separación grande para que parezca michi */
+}
+
+.ojo {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  border: 3px solid #030625;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pupila {
+  width: 20px;
+  height: 20px;
+  background: #030625;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.4s;
+}
+
+/* 💖 Boquita kawaii tipo michi
+.boca {
+  font-size: 2rem;
+  color: #FFD366;
+  font-weight: bold;
+  line-height: 1;
+  transform: scaleX(1.2);
+  margin-top: 0.2rem;
+} */
+
+
+
+  .box-precentacion {
+    width: 95%;
+    top: auto;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+    background-color: #0a1a4080; /* más contraste */
+    backdrop-filter: blur(5px);
+  }
+
+  .texto h2 {
+    font-size: 1.5em;
+  }
+
+  .texto p {
+    font-size: 0.9em;
+    max-width: 100%;
+  }
+
+  .img {
+    height: 200px;
+    object-fit: contain;
+  }
+
+  .cubo-container {
+    display: none;
+  }
+
+  .solo-movil {
+    display: block;
+    color: #FFD366;
+    font-size: 1.1em;
+    margin-top: 1em;
+    text-align: center;
+  }
+}
+

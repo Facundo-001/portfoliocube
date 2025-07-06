@@ -1,0 +1,95 @@
+/* Cube.css */
+
+/* Estilos para los cubos de fondo (sutiles) */
+.rotating-cube-bg {
+  position: absolute;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  transform-style: preserve-3d;
+  animation: cubeRotateBg var(--animation-speed) infinite linear var(--animation-delay);
+  perspective: calc(var(--cube-size) * 10);
+  z-index: 0; /* Detrás del contenido principal */
+  opacity: 0.08; /* Mucho más sutil para el fondo */
+  pointer-events: none; /* Asegura que no bloqueen interacciones */
+}
+
+.cube-face {
+  position: absolute;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  border: 1px solid rgba(0, 255, 255, 0.05); /* Borde aún más sutil */
+  background: rgba(0, 255, 255, 0.02); /* Fondo aún más translúcido */
+  box-shadow: 0 0 3px rgba(0, 255, 255, 0.05); /* Brillo muy sutil */
+  backface-visibility: hidden;
+}
+
+/* Posicionamiento de cada cara del cubo (usando var --cube-size) */
+.cube-front { transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2)); }
+.cube-back { transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2)); }
+.cube-right { transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2)); }
+.cube-left { transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2)); }
+.cube-top { transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2)); }
+.cube-bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2)); }
+
+/* Animación de rotación para los cubos de fondo */
+@keyframes cubeRotateBg {
+  0% { transform: rotateX(var(--initial-rotateX)) rotateY(var(--initial-rotateY)) rotateZ(var(--initial-rotateZ)); }
+  100% { transform: rotateX(calc(var(--initial-rotateX) + 360deg)) rotateY(calc(var(--initial-rotateY) + 360deg)) rotateZ(calc(var(--initial-rotateZ) + 360deg)); }
+}
+
+/* === NUEVO: Estilos para el cubo principal/individual === */
+.main-rotating-cube {
+  z-index: 10; /* ¡MUY ALTO! Asegura que esté por encima de todo el contenido principal */
+  opacity: 1; /* Completamente visible */
+  border: 2px solid rgba(0, 255, 255, 0.8); /* Borde más prominente */
+  background: rgba(0, 255, 255, 0.15); /* Fondo más visible */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.3); /* Brillo fuerte */
+  animation: mainCubeFloatRotate 6s infinite ease-in-out alternate; /* Animación específica */
+}
+
+/* Animación específica para el cubo principal */
+@keyframes mainCubeFloatRotate {
+  0% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateX(180deg) rotateY(180deg) rotateZ(0deg);
+  }
+  100% {
+    transform: translateY(0) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+/* Responsive para los cubos de fondo */
+@media (max-width: 1024px) {
+  .rotating-cube-bg {
+    opacity: 0.05;
+  }
+  .main-rotating-cube { /* Ajustes para el cubo principal en tabletas */
+    width: 40px;
+    height: 40px;
+    /* Las propiedades top/left/transform vienen del inline style en AcercaDe.jsx para flexibilidad */
+    animation: cubeRotateMobile 8s infinite linear; /* Usar animación más simple */
+  }
+  .cube-face { /* Asegurarse de que las caras se ajusten al tamaño reducido del cubo en responsive */
+    width: var(--cube-size);
+    height: var(--cube-size);
+    /* No es necesario re-definir todos los transforms aquí si se usa var(--cube-size) correctamente */
+  }
+}
+
+@media (max-width: 768px) {
+  .rotating-cube-bg {
+    opacity: 0.03; /* Aún más sutil en móviles pequeños */
+    /* Opcional: display: none; si el rendimiento es un problema */
+  }
+  .main-rotating-cube {
+    display: none; /* Ocultar el cubo principal en móviles muy pequeños */
+  }
+}
+
+/* Animación de rotación simple para móvil para el cubo principal */
+@keyframes cubeRotateMobile {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
