@@ -106,7 +106,7 @@ const AcercaDe = () => {
           <div className="habilidades">
             <h2>⚙️ Habilidades</h2>
             <ul>
-              <li>✨ HTML, CSS, JavaScript, React, un poco de sql, firebase</li>
+              <li>✨ HTML, CSS, JavaScript, React, un poco de sql, firebase, GitHub</li>
               <li>🎨 Diseño visual y animaciones UI</li>
               <li>🧠 Resolución de problemas creativos</li>
               <li>🎮 Pasión por los detalles y la estética gamer</li>
